@@ -1,65 +1,48 @@
 ﻿using System;
-
-class BankAccount
+class bankaccount
 {
-    // Private field (cannot be accessed directly from outside)
-    private double balance;
+	private double balance;
 
-    // Constructor
-    public BankAccount(double initialBalance)
-    {
-        if (initialBalance >= 0)
-            balance = initialBalance;
-        else
-            balance = 0;
-    }
-
-    // Public method to deposit money
-    public void Deposit(double amount)
-    {
-        if (amount > 0)
-        {
-            balance += amount;
-            Console.WriteLine($"Deposited: {amount}, New Balance: {balance}");
-        }
-        else
-        {
-            Console.WriteLine("Deposit amount must be positive!");
-        }
-    }
-
-    // Public method to withdraw money
-    public void Withdraw(double amount)
-    {
-        if (amount > 0 && amount <= balance)
-        {
-            balance -= amount;
-            Console.WriteLine($"Withdrawn: {amount}, Remaining Balance: {balance}");
-        }
-        else
-        {
-            Console.WriteLine("Invalid withdrawal amount or insufficient balance!");
-        }
-    }
-
-    // Public method to check balance (only read, no modify)
-    public double GetBalance()
-    {
-        return balance;
-    }
-}
-
-class Program
-{
-    static void Main()
-    {
-        BankAccount account = new BankAccount(500);
-
-        // balance cannot be accessed directly
-        // account.balance = 1000;  // ❌ ERROR (private field)
-
-        account.Deposit(200);      // ✅ Allowed
-        account.Withdraw(100);     // ✅ Allowed
-        Console.WriteLine($"Final Balance: {account.GetBalance()}");
-    }
-}
+	public bankaccount(double initialbalance)
+	{
+		if(initialbalance >= 0)
+		{
+			balance = initialbalance;
+		}
+		else
+		{
+			balance = 0;
+		}
+	}
+	public void deposit(double amount)
+	{
+		balance += amount;
+		Console.WriteLine($"Deposited; {amount},New Balance{balance}");
+	}
+	public void Withdraw(double amount)
+	{
+		if (amount > 0 && amount <= balance)
+		{
+			balance -= amount;
+			Console.WriteLine($"Withdraw;{amount},New Balance:{balance}");
+		}
+		else
+		{
+			Console.WriteLine("Invalid Withdrawal amount or Insufficient Bank Balance");
+		}
+	}
+		public double getbalance()
+		{
+			return balance;
+		}
+	}
+	class Program
+	{
+		static void Main()
+		{
+			bankaccount account = new bankaccount(500);
+			account.Withdraw(100);
+			account.deposit(200);
+		Console.WriteLine($"Final Balance:{account.getbalance()}");
+		}
+	}
